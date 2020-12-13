@@ -15,6 +15,7 @@
 <p align="center">Table-1: Created Files List</p>
 
 <div>
-    <p align="left">After login (login), The API gives a token which is stored <b>[figure-1]</b> in cookies [<b>implemented in cookie.py]</b>.</p>
     <img align="right" src="https://user-images.githubusercontent.com/20153768/102019392-8e361180-3d9d-11eb-8ec3-86e1a47bbc81.png">
+    <p align="left">After login (login), The API gives a token which is stored <b>[figure-1]</b> in cookies [<b>implemented in cookie.py]</b>.</p>
+    
 </div>
