@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-3">
+<nav class="navbar navbar-default bg-dark navbar-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Assignmet</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'logout' %}" class="text-light"><span></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mt-4">    
+                <h2 class="text-center">Submit Your Infromation</h2>
+                <form id="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+
+                    {% for message in messages %}
+                       <p id='messages'>{{ message }}</p>
+                    {% endfor %}
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3" type="submit">Submit</button>                  
+                </form>
+                <div class="mb-5">
+          </div>
+    </div>
+
+</div>
+    
+{% endblock content %}
+    
