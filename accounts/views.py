@@ -9,10 +9,9 @@ from . decorators import *
 from . models import userDetails
 
 
-# Create your views here.
 
 list_of_response=[]
-
+### login view 
 @is_authenticated ### check weather user loged in or not
 def login(request):
     if request.method=="POST":
@@ -27,7 +26,7 @@ def login(request):
 
 
 
-@unAthenticated
+@unAthenticated ### check uer is unauthenticated
 def home(request):
     # print(request.user)
     list_of_response.clear()
@@ -69,6 +68,7 @@ def home(request):
                     message.append("File format (shoud be pdf) or size (should be 4MB) may Occure Error")
                 else:
                     try:
+                        ### database check, exits info or not
                         try:
                             exit_mail =userDetails.objects.get(email=email)
                         except :
@@ -90,16 +90,17 @@ def home(request):
                             tsync_pdf_id = exit_mail.pdf_tysnic_id
                             created_at = exit_mail.created_at
                             updated_at = time_calculation()                        
-                        
+                        ### data post into url
                         response = postData(str(token),str(tsync_id),str(name),str(email),str(phone),str(address),str(university),str(graduation_Year),str(cgpa),str(experiance),str(current_working_place),str(interst_in),str(expected_salary),str(field_Buzz_Ref),str(github_url),str(tsync_pdf_id),str(created_at),str(updated_at))
+                        ### cv save in local storage
                         fs = FileSystemStorage()
                         fs.save(resume.name,resume)
+                        ### file put into url
                         file_token_id= response["cv_file"]["id"]
                         file_res= putResume(file_token_id,resume.name,token)
+                        ### response add into global list
                         list_of_response.append(json.dumps(response))
                         list_of_response.append(json.dumps(file_res))
-                        # print(json.dumps(response))
-                        # print(json.dumps(file_res))
                         return redirect('result')
                     except Exception as e:
                         list_of_response.append("Error!!!!!")

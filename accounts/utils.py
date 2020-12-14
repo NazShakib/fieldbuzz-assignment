@@ -6,17 +6,18 @@ import os
 import uuid
 
 
+### form data restiction handle
 def dataRestictions_handle(name,email,phone, address,university,graduation_Year,cgpa, experiance, current_working_place, applying_in, expected_salary,field_Buzz_Ref, github_url):
     message = ""
     if len(str(name))>256 and len(str(name))<=0:
         message = "Name Length Must be Between 1 and 256"
-
+    
     elif  len(str(email))>256 and len(str(email))<=0:
         message = "Email Length Must be Between 1 and 256"
     
     elif len(str(phone))>14 and len(str(phone))<=10:
         message = "Phone Length Must be Between 10 and 14"
-
+    
     elif len(str(address))>512 and len(str(address))<=0:
         message = "Address Length Must be Between 1 and 512"
     
@@ -25,31 +26,32 @@ def dataRestictions_handle(name,email,phone, address,university,graduation_Year,
     
     elif graduation_Year>2020 and graduation_Year<=2014:
         message = "Graduation Year's Must be Between 2015 and 2020"
-    
+        
     elif cgpa>4 and cgpa<=1.99:
         message = "CGPA Must be Between 2.00 and 4.00"
-
+    
     elif experiance>100 and experiance<0:
         message = "Experiance Must be Between 0 and 100"
-
+        
     elif len(str(current_working_place))>256 and len(str(current_working_place))<=0:
         message = "Current Working Place's Length Must be Between 1 and 256"
-
+    
     elif applying_in=="None":
         message = "Select Android or Backend as your interest"
-
+    
     elif expected_salary>60000 or expected_salary<=14999:
         message = "Expected Salary Must be Between 15000 an 60000"
-
+    
     elif len(str(field_Buzz_Ref))>256 and len(str(field_Buzz_Ref))<=0:
         message = "Feild Buzz Ref's Length Must be Between 1 and 256"
-
+    
     elif len(str(github_url))>512 and len(str(github_url))<=0:
         message = "Github URL link's Lenght Must be Between 0 and 512"
     
     return message
 
 
+#### file put into url
 
 def putResume(file_token_id,filename,token):
     url = "https://recruitment.fisdev.com/api/file-object/"+str(file_token_id)+"/"
@@ -64,23 +66,24 @@ def putResume(file_token_id,filename,token):
     return response.json()
 
 
+### user login 
 def getToken(username,password):
     url = "https://recruitment.fisdev.com/api/login/"
     response = requests.post(url,data={'username':username,'password':password})
     return response.json()
 
 
-
+### time calculation
 def time_calculation():
     return int(time() * 1000)
 
-
+### tynsic_ id genarator
 def tsyncID_genarator(email):
     id_main = uuid.uuid3(uuid.NAMESPACE_DNS, str(email))
     id_pdf = uuid.uuid3(id_main,str(email))
     return str(id_main),str(id_pdf)
 
-
+### data post into url
 def postData(token,tsync_id,name,email,phone, address,university,graduation_Year,cgpa, experiance, current_working_place, applying_in, expected_salary,field_Buzz_Ref, github_url,tsync_id_pdf,created_time,updated_time):
     url = "https://recruitment.fisdev.com/api/v0/recruiting-entities/"
     data =  {

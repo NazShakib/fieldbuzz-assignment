@@ -1,6 +1,6 @@
 from django import forms
 
-
+### user info form
 class ApplicantInfo(forms.Form):
     name = forms.CharField(max_length=256,widget=forms.TextInput(attrs={"class": "form-control","name":"fullname",'placeholder':'Full Name'}))
     email=forms.EmailField(max_length=256,widget=forms.TextInput(attrs={"class": "form-control","name":"email",'placeholder':'Email'}))

@@ -1,6 +1,7 @@
 from django.conf import settings
 import datetime
 
+### set the token into cookie
 def setCookie(request,key, value):
         request.session.set_test_cookie()
         # This will delete this test cookie when the user's browser is closed.
@@ -8,6 +9,7 @@ def setCookie(request,key, value):
         request.session[key] = value
 
 
+### check token is exits or not
 def getCookie(request,key):
     try:
         value = request.session.get(key)
@@ -15,11 +17,10 @@ def getCookie(request,key):
     except Exception as e:
         return None
 
-
+### delete the token 
 def deleteCookies(request):
     # Checking if there is test cookie created and stored in user's browser
     if (request.session.test_cookie_worked()):
         print("Yes, there was a test cookie in your browser")
-        # This will delete the cookie when the browser is closed.
         request.session.flush()
         return True
