@@ -4,7 +4,7 @@
     Assignment Documentation
 </h1>
 
-<h5 align='justify'>There have some files which are created to implemented the assignment. Below, discuss about the created files which were developed during implementation. In table-1, discuss about created files. Explanation is the overview of reason of created files.</h5>
+<h5 align='justify'>Although django creates files automatically,but here some files are created to implemented the assignment. Below, discuss about the created files which were developed during implementation. In table-1, discuss about created files. Explanation is the overview of reason of created files.</h5>
 
 
 | <h3 align="center">File Name</h3>|                                       <h3 align="center">Explanation</h3>                                                                           |
@@ -17,8 +17,18 @@
 <p align="center">Table-1: Created Files List</p>
 
 <div>
-        <img align="right" src="https://user-images.githubusercontent.com/20153768/102019392-8e361180-3d9d-11eb-8ec3-86e1a47bbc81.png">
-    <p align="left">After login (login), The API gives a token which is stored <b>[figure-1]</b> in cookies [<b>implemented in cookie.py]</b>.</p>
+       <img align="right" src="https://user-images.githubusercontent.com/20153768/102019392-8e361180-3d9d-11eb-8ec3-86e1a47bbc81.png">
+      <p align="left"><b>1.</b> After login (login), The API gives a token which is stored <b>[figure-1]</b> in cookies [<b>implemented in cookie.py]</b>.</p>
     
 </div>
 <p align="right" >Figure-1: store in cookies</p>
+
+
+<p><b>2.</b>The stored token is included as Authorization for both Recruitment Information API <b>[implemented in utils.py file]</b> and file upload API <b>[implemented in utils.py file]</b>. The token also used for permissions <b>[implemented in decorators.py]</b>.</p>
+    <ul>
+        <li>    Both tysnic_id generated [implemented in utils.py] based on email address. So, in this case email address act as a unique key.</li>
+        <li>    tysnic_id, email, cv’s tysnic_id and created time are uploaded in database [implemented in views.py]. It would help to further update the information.</li>
+        <li>    File restriction [implemented in views.py, form.py]; For example: pdf only, file’s size etc.</li>
+    </ul>
+    
+<p><b>3.</b>  After posting data, both API return successful response <b>[implemented in view.py and result.html]</b>.  </p>
