@@ -24,11 +24,11 @@
 <p align="right" >Figure-1: store in cookies</p>
 
 
-<p><b>2.</b>The stored token is included as Authorization for both Recruitment Information API <b>[implemented in utils.py file]</b> and file upload API <b>[implemented in utils.py file]</b>. The token also used for permissions <b>[implemented in decorators.py]</b>.</p>
+<p align='justify'><b>2.</b>The stored token is included as Authorization for both Recruitment Information API <b>[implemented in utils.py file]</b> and file upload API <b>[implemented in utils.py file]</b>. The token also used for permissions <b>[implemented in decorators.py]</b>.</p>
     <ul>
-        <li>    Both tysnic_id generated [implemented in utils.py] based on email address. So, in this case email address act as a unique key.</li>
-        <li>    tysnic_id, email, cv’s tysnic_id and created time are uploaded in database [implemented in views.py]. It would help to further update the information.</li>
-        <li>    File restriction [implemented in views.py, form.py]; For example: pdf only, file’s size etc.</li>
+        <li>    Both <b>tysnic_id</b> generated <b>[implemented in utils.py]</b> based on email address. So, in this case email address act as a unique key.</li>
+        <li>    <b>tysnic_id, email, cv’s tysnic_id and created time</b> are uploaded in database <b>[implemented in views.py]</b>. It would help to further update the information.</li>
+        <li>    File restriction <b>[implemented in views.py, form.py]</b>; For example: pdf only, file’s size etc.</li>
     </ul>
     
 <p><b>3.</b>  After posting data, both API return successful response <b>[implemented in view.py and result.html]</b>.  </p>
